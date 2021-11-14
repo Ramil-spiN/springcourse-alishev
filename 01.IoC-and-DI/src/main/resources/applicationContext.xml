@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+    <context:property-placeholder location="classpath:test.properties"/>
+
+    <bean id="musicBean01"
+          class="main.java.ru.spin.main.ElectroMusic"
+          init-method="doInit"
+          destroy-method="doDestroy"
+          factory-method="getElectroMusic"> <!--Фабричный метод-->
+    </bean>
+    <bean id="musicBean02"
+          class="main.java.ru.spin.main.RockNRollMusic"
+          init-method="doInit"
+          destroy-method="doDestroy">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="main.java.ru.spin.main.MusicPlayer"
+          scope="prototype"
+          init-method="doInit"
+          destroy-method="doDestroy">
+        <!--<constructor-arg ref="musicBean"/>--> <!--Внедрение зависимости через конструктор-->
+        <property name="musicList"> <!--Внедрение зависимости через сеттер setMusicList. Должен быть пустой конструктор-->
+            <list>
+                <ref bean="musicBean01"/>
+                <ref bean="musicBean02"/>
+            </list>
+        </property>
+
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+
+</beans>
