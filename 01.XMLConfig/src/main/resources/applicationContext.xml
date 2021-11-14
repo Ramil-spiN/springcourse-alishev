@@ -11,19 +11,19 @@
     <context:property-placeholder location="classpath:test.properties"/>
 
     <bean id="musicBean01"
-          class="main.java.ru.spin.main.ElectroMusic"
+          class="ru.spin.main.ElectroMusic"
           init-method="doInit"
           destroy-method="doDestroy"
           factory-method="getElectroMusic"> <!--Фабричный метод-->
     </bean>
     <bean id="musicBean02"
-          class="main.java.ru.spin.main.RockNRollMusic"
+          class="ru.spin.main.RockNRollMusic"
           init-method="doInit"
           destroy-method="doDestroy">
     </bean>
 
     <bean id="musicPlayer"
-          class="main.java.ru.spin.main.MusicPlayer"
+          class="ru.spin.main.MusicPlayer"
           scope="prototype"
           init-method="doInit"
           destroy-method="doDestroy">

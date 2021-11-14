@@ -1,4 +1,4 @@
-package main.java.ru.spin.main;
+package ru.spin.main;
 
 public class ElectroMusic implements Music {
     private String singer;
