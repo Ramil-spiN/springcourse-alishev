@@ -1,16 +1,18 @@
 package ru.spin.main;
 
-public class RockNRollMusic implements Music {
-    public void doInit() {
-        System.out.println("RockNRoll Initialization");
-    }
+import org.springframework.stereotype.Component;
 
-    public void doDestroy() {
-        System.out.println("RockNRoll Destruction");
-    }
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+//@Component("musicBean") //id в скобках необязателен
+@Component
+public class RockNRollMusic implements Music {
+   private List<String> songs = new ArrayList<>(Arrays.asList("Hound Dog", "That's all right mama", "Burning Love"));
 
     @Override
-    public String getSong() {
-        return "Hound Dog";
+    public String getSong(int i) {
+        return songs.get(i);
     }
 }

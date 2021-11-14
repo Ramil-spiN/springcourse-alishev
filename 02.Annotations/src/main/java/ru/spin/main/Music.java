@@ -1,5 +1,5 @@
 package ru.spin.main;
 
 public interface Music {
-    String getSong();
+    String getSong(int i);
 }

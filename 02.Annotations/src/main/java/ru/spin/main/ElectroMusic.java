@@ -1,32 +1,17 @@
 package ru.spin.main;
 
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+@Component
 public class ElectroMusic implements Music {
-    private String singer;
-
-    private ElectroMusic() {}
-
-    public static ElectroMusic getElectroMusic() { //Фабричный метод
-        return new ElectroMusic();
-    }
-
-    public String getSinger() {
-        return singer;
-    }
-
-    public void setSinger(String singer) {
-        this.singer = singer;
-    }
-
-    public void doInit() {
-        System.out.println("Electro Initialization");
-    }
-
-    public void doDestroy() {
-        System.out.println("Electro Destruction");
-    }
+    private List<String> songs = new ArrayList<>(Arrays.asList("Rock Your Body", "Electric City", "Supersonic"));
 
     @Override
-    public String getSong() {
-        return "Rock Your Body";
+    public String getSong(int i) {
+        return songs.get(i);
     }
 }

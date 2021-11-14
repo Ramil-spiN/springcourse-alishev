@@ -7,36 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-    <context:property-placeholder location="classpath:test.properties"/>
-
-    <bean id="musicBean01"
-          class="ru.spin.main.ElectroMusic"
-          init-method="doInit"
-          destroy-method="doDestroy"
-          factory-method="getElectroMusic"> <!--Фабричный метод-->
-    </bean>
-    <bean id="musicBean02"
-          class="ru.spin.main.RockNRollMusic"
-          init-method="doInit"
-          destroy-method="doDestroy">
-    </bean>
-
-    <bean id="musicPlayer"
-          class="ru.spin.main.MusicPlayer"
-          scope="prototype"
-          init-method="doInit"
-          destroy-method="doDestroy">
-        <!--<constructor-arg ref="musicBean"/>--> <!--Внедрение зависимости через конструктор-->
-        <property name="musicList"> <!--Внедрение зависимости через сеттер setMusicList. Должен быть пустой конструктор-->
-            <list>
-                <ref bean="musicBean01"/>
-                <ref bean="musicBean02"/>
-            </list>
-        </property>
-
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    <context:component-scan base-package="ru.spin.main"/>
 
 </beans>
