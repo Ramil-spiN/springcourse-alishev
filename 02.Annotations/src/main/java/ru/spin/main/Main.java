@@ -17,6 +17,9 @@ public class Main {
         Computer computer = context.getBean("computer", Computer.class);
         System.out.println(computer.toString(MusicGenre.ROCKNROLL));
 
+        System.out.println(computer.getName());
+        System.out.println(computer.getVolume());
+
         context.close();
     }
 }

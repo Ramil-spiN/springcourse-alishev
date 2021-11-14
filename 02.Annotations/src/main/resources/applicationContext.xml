@@ -9,4 +9,6 @@
 
     <context:component-scan base-package="ru.spin.main"/>
 
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
 </beans>
