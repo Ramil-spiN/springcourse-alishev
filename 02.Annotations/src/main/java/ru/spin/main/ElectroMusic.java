@@ -21,7 +21,7 @@ public class ElectroMusic implements Music {
     }
 
     @PreDestroy
-    private int doDestroy() { //Не должно быть аргументов, любой тип, любое название
+    private int doDestroy() { //Не должно быть аргументов, любой тип возвращаемого значения, любое название
         System.out.println("Electro destroy");
         return 0;
     }
