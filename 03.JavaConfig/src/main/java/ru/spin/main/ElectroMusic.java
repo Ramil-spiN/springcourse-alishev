@@ -15,7 +15,7 @@ import javax.annotation.PreDestroy;
 public class ElectroMusic implements Music {
     private List<String> songs = new ArrayList<>(Arrays.asList("Rock Your Body", "Electric City", "Supersonic"));
 
-    @PostConstruct
+    /*@PostConstruct
     public void doInit() { //Не должно быть аргументов, любой тип, любое название
         System.out.println("Electro init");
     }
@@ -24,7 +24,7 @@ public class ElectroMusic implements Music {
     private int doDestroy() { //Не должно быть аргументов, любой тип возвращаемого значения, любое название
         System.out.println("Electro destroy");
         return 0;
-    }
+    }*/
 
     @Override
     public int getSongsCount() {
