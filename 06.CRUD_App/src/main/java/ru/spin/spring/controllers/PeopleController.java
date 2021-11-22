@@ -1,11 +1,15 @@
 package ru.spin.spring.controllers;
 
+//import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.spin.spring.dao.PersonDAO;
 import ru.spin.spring.models.Person;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/people")
@@ -40,8 +44,12 @@ public class PeopleController {
     }
 
     @PostMapping()
-    public String createPerson(@ModelAttribute("person") Person person) {
+    public String createPerson(@ModelAttribute("person") @Valid Person person,
+                               BindingResult bindingResult) {
         //Добавим нового человека с данными из предыдущей формы
+        if (bindingResult.hasErrors())
+            return "people/new";
+
         personDAO.save(person);
         return "redirect:/people";
     }
@@ -54,8 +62,12 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String updatePerson(@ModelAttribute("person") Person person) {
+    public String updatePerson(@ModelAttribute("person") @Valid Person person,
+                               BindingResult bindingResult) {
         //Сохраним изменения из предыдущей формы
+        if (bindingResult.hasErrors())
+            return "people/edit";
+
         personDAO.update(person);
         return "redirect:/people";
     }
